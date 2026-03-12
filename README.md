@@ -4,7 +4,7 @@ A hackertyper-style hacking simulator that runs **entirely from a single local H
 
 ## ⬇️ How to download and run
 
-1. Go to the **[Releases](../../releases)** page — or click **`index.html`** in the file list above and press the download button.
+1. Click **`index.html`** in the file list above and press the download button.
 2. Save `index.html` anywhere on your computer (Desktop, Downloads, etc.).
 3. **Double-click** it in File Explorer (Windows) / Finder (macOS) — it opens straight in your browser.
 4. Start typing to hack!
@@ -33,3 +33,5 @@ A hackertyper-style hacking simulator that runs **entirely from a single local H
 - **Speed** — 1 – 8 characters per keystroke
 - **Effects** — CRT scanlines · Matrix rain · Glitch · Sound
 - **Rewards** — Credits are shown in the header (`⛃`) and bonus toasts appear for key events
+
+there might be bugs in the code.
