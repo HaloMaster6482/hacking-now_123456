@@ -180,6 +180,56 @@
       white-space: nowrap;
     }
 
+    #brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 30px;
+      height: 30px;
+      flex-shrink: 0;
+      color: var(--fg);
+      filter: drop-shadow(0 0 6px color-mix(in srgb, var(--fg) 65%, transparent));
+    }
+
+    .brand-mark svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .brand-mark path,
+    .brand-mark circle,
+    .brand-mark line {
+      stroke: currentColor;
+    }
+
+    .brand-mark .brand-fill {
+      fill: currentColor;
+      stroke: none;
+    }
+
+    #brand-text {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    #brand-name {
+      color: var(--fg-bright);
+      letter-spacing: 0.16em;
+      font-size: 12px;
+      text-shadow: var(--glow);
+      line-height: 1;
+    }
+
+    #terminal-title {
+      margin-top: 2px;
+    }
+
     #status-text {
       color: var(--fg-bright);
       font-weight: bold;
@@ -654,6 +704,44 @@
       animation: fadeInDown 0.8s ease;
     }
 
+    #splash-emblem {
+      width: 88px;
+      height: 88px;
+      margin: 0 auto 18px;
+      color: var(--fg-bright);
+      filter: drop-shadow(0 0 12px color-mix(in srgb, var(--fg) 75%, transparent));
+      animation: splash-emblem-pulse 2.2s ease-in-out infinite;
+    }
+
+    #splash-emblem svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    #splash-emblem path,
+    #splash-emblem circle,
+    #splash-emblem line {
+      stroke: currentColor;
+    }
+
+    #splash-emblem .brand-fill {
+      fill: currentColor;
+      stroke: none;
+    }
+
+    @keyframes splash-emblem-pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.04);
+      }
+    }
+
     @keyframes fadeInDown {
       from {
         opacity: 0;
@@ -864,6 +952,24 @@
         font-size: 7px;
       }
 
+      #brand-name {
+        font-size: 10px;
+      }
+
+      #terminal-title {
+        font-size: 11px;
+      }
+
+      .brand-mark {
+        width: 24px;
+        height: 24px;
+      }
+
+      #splash-emblem {
+        width: 70px;
+        height: 70px;
+      }
+
       #settings-panel {
         width: 100%;
         border-left: none;
@@ -894,7 +1000,22 @@
   <!-- Main terminal -->
   <div id="terminal-wrapper">
     <div id="terminal-header">
-      <span id="terminal-title">root@hackersim:~# <span id="status-text">READY</span></span>
+      <div id="brand-lockup">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M32 4 53 16v32L32 60 11 48V16Z"></path>
+            <path d="M23 34l7 7 13-18"></path>
+            <circle cx="18" cy="24" r="2.2" class="brand-fill"></circle>
+            <circle cx="46" cy="24" r="2.2" class="brand-fill"></circle>
+            <line x1="20" y1="24" x2="27" y2="24"></line>
+            <line x1="37" y1="24" x2="44" y2="24"></line>
+          </svg>
+        </div>
+        <div id="brand-text">
+          <span id="brand-name">HACKERSIM</span>
+          <span id="terminal-title">root@hackersim:~# <span id="status-text">READY</span></span>
+        </div>
+      </div>
       <div id="header-controls">
         <span id="progress-label">PROGRESS:</span>
         <div id="progress-bar-container">
@@ -1017,6 +1138,16 @@
   <!-- Splash / intro screen -->
   <div id="splash">
     <div id="splash-inner">
+      <div id="splash-emblem" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M32 4 53 16v32L32 60 11 48V16Z"></path>
+          <path d="M23 34l7 7 13-18"></path>
+          <circle cx="18" cy="24" r="2.2" class="brand-fill"></circle>
+          <circle cx="46" cy="24" r="2.2" class="brand-fill"></circle>
+          <line x1="20" y1="24" x2="27" y2="24"></line>
+          <line x1="37" y1="24" x2="44" y2="24"></line>
+        </svg>
+      </div>
       <pre id="splash-logo">
  _   _            _             ____  _
 | | | | __ _  ___| | _____ _ __/ ___|(_)_ __ ___
