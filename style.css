@@ -602,6 +602,86 @@ kbd {
   letter-spacing: 0.15em;
 }
 
+/* ---------- Ticker bar ---------- */
+#ticker-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  height: 28px;
+  background: var(--header-bg);
+  border-top: 1px solid var(--fg-dim);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+#ticker-track {
+  display: flex;
+  gap: 0;
+  white-space: nowrap;
+  animation: ticker-scroll 40s linear infinite;
+}
+
+/* Duplicate content is added by JS so the loop is seamless */
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.ticker-item {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--fg);
+  padding: 0 40px;
+  opacity: 0.85;
+}
+
+.ticker-item.liam {
+  color: var(--fg-bright);
+  font-weight: bold;
+  text-shadow: var(--glow);
+}
+
+/* Make terminal wrapper leave room for ticker */
+#terminal-wrapper {
+  bottom: 28px !important;
+}
+
+/* ---------- Splash instructions ---------- */
+#splash-how-to {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--fg-dim);
+  border-radius: 6px;
+  padding: 14px 20px;
+  margin: 16px auto 20px;
+  max-width: 520px;
+  text-align: left;
+}
+
+.how-step {
+  font-size: 12px;
+  color: var(--fg);
+  margin: 5px 0;
+  line-height: 1.6;
+  letter-spacing: 0.03em;
+}
+
+.how-step strong {
+  color: var(--fg-bright);
+  text-shadow: var(--glow);
+  font-size: 13px;
+}
+
+.how-step kbd {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid var(--fg-dim);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 11px;
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 600px) {
   :root { --font-size: 12px; }
@@ -611,4 +691,5 @@ kbd {
   #splash-logo { font-size: 7px; }
   #settings-panel { width: 100%; border-left: none; }
   #progress-bar-container { width: 70px; }
+  #splash-how-to { margin: 12px 16px 16px; }
 }

@@ -1044,6 +1044,13 @@ sync:*:18480:0:99999:7:::
 > installing persistence hook.....OK
 ENCRYPTION KEY: 7f3k2x9p4m1n6w8q5r0t
 STATUS: LEVEL 5 CLEARANCE OBTAINED
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!! LIAM IS STUPID AND DOES NOT HAVE COMMON SENSE               !!
+!! LIAM IS STUPID AND DOES NOT HAVE COMMON SENSE               !!
+!! LIAM IS STUPID AND DOES NOT HAVE COMMON SENSE               !!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 > scanning subnet 10.0.0.0/24
 10.0.0.1  [GATEWAY]   80/http  443/https  22/ssh
 10.0.0.42 [SERVER]    8080/api 5432/pgsql 6379/redis
@@ -1086,6 +1093,7 @@ mysql> SELECT * FROM user_credentials LIMIT 5;
 +----+------------------+------------------------------------------+
 >> OPERATION NIGHTFALL: PHASE 1 COMPLETE
 >> UPLOADING DATA TO C2 SERVER.............[██████████] DONE
+>> LIAM IS STUPID AND DOES NOT HAVE COMMON SENSE
 >> SELF-DESTRUCT SEQUENCE INITIATED........3...2...1...
 >> TRACES REMOVED.
 `,
@@ -1530,6 +1538,19 @@ $accessOverlay.addEventListener('click', () => {
 window.addEventListener('resize', () => {
   if (state.matrixOn) resizeMatrix();
 });
+
+/* ── Ticker — duplicate content for seamless loop & mark Liam items ── */
+(function initTicker() {
+  const track = document.getElementById('ticker-track');
+  if (!track) return;
+  // Mark Liam items with a class for bright styling
+  track.querySelectorAll('.ticker-item').forEach(item => {
+    if (item.textContent.includes('LIAM')) item.classList.add('liam');
+  });
+  // Duplicate all items so the CSS animation loops without a jump
+  const items = Array.from(track.children);
+  items.forEach(item => track.appendChild(item.cloneNode(true)));
+}());
 
 /* ── Init ─────────────────────────────────────────────────── */
 updateProgress();
